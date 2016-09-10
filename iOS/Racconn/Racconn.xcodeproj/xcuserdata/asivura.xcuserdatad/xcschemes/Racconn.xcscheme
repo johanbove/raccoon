@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B9898CB1D84B97A008B3A88"
+               BlueprintIdentifier = "8B9898E91D84C223008B3A88"
                BuildableName = "Racconn.app"
                BlueprintName = "Racconn"
                ReferencedContainer = "container:Racconn.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B9898CB1D84B97A008B3A88"
+            BlueprintIdentifier = "8B9898E91D84C223008B3A88"
             BuildableName = "Racconn.app"
             BlueprintName = "Racconn"
             ReferencedContainer = "container:Racconn.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B9898CB1D84B97A008B3A88"
+            BlueprintIdentifier = "8B9898E91D84C223008B3A88"
             BuildableName = "Racconn.app"
             BlueprintName = "Racconn"
             ReferencedContainer = "container:Racconn.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B9898CB1D84B97A008B3A88"
+            BlueprintIdentifier = "8B9898E91D84C223008B3A88"
             BuildableName = "Racconn.app"
             BlueprintName = "Racconn"
             ReferencedContainer = "container:Racconn.xcodeproj">
