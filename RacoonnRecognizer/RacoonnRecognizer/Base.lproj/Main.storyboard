@@ -23,11 +23,15 @@
                                 <rect key="frame" x="20" y="20" width="560" height="438"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I3D-OG-vZK">
+                                <rect key="frame" x="104" y="85.5" width="392" height="307"/>
+                                <color key="backgroundColor" red="1" green="0.15686274510000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGD-m1-Z33">
                                 <rect key="frame" x="104" y="85.5" width="392" height="307"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.29999999999999999" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oyg-Tg-O7g">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oyg-Tg-O7g">
                                 <rect key="frame" x="18" y="474" width="318" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="314" id="SGG-82-FbZ"/>
@@ -45,8 +49,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="I3D-OG-vZK" firstAttribute="bottom" secondItem="IGD-m1-Z33" secondAttribute="bottom" id="3PO-xE-rst"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oyg-Tg-O7g" secondAttribute="bottom" constant="96" id="3h3-ou-827"/>
                             <constraint firstItem="IGD-m1-Z33" firstAttribute="width" secondItem="QPu-zw-SOr" secondAttribute="width" multiplier="0.7" id="7HM-tA-EbH"/>
+                            <constraint firstItem="I3D-OG-vZK" firstAttribute="leading" secondItem="IGD-m1-Z33" secondAttribute="leading" id="DKL-sN-knO"/>
+                            <constraint firstItem="I3D-OG-vZK" firstAttribute="trailing" secondItem="IGD-m1-Z33" secondAttribute="trailing" id="LWi-TC-YsJ"/>
                             <constraint firstItem="coU-Gl-w1N" firstAttribute="leading" secondItem="oyg-Tg-O7g" secondAttribute="trailing" constant="76" id="LjP-ve-2oX"/>
                             <constraint firstItem="IGD-m1-Z33" firstAttribute="centerY" secondItem="QPu-zw-SOr" secondAttribute="centerY" id="Rf1-gx-dcp"/>
                             <constraint firstItem="oyg-Tg-O7g" firstAttribute="top" secondItem="QPu-zw-SOr" secondAttribute="bottom" constant="16" id="abH-ql-FQn"/>
@@ -56,12 +63,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="QPu-zw-SOr" secondAttribute="trailing" id="hns-Cg-p9I"/>
                             <constraint firstItem="QPu-zw-SOr" firstAttribute="leading" secondItem="oyg-Tg-O7g" secondAttribute="leading" id="ihz-Rs-DaE"/>
                             <constraint firstItem="QPu-zw-SOr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jPv-mr-Q2e"/>
+                            <constraint firstItem="I3D-OG-vZK" firstAttribute="top" secondItem="IGD-m1-Z33" secondAttribute="top" id="vNF-hM-ji8"/>
                             <constraint firstItem="IGD-m1-Z33" firstAttribute="centerX" secondItem="QPu-zw-SOr" secondAttribute="centerX" id="vwF-hM-F3r"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="borderView" destination="IGD-m1-Z33" id="ap6-eM-SR4"/>
-                        <outlet property="imageView" destination="QPu-zw-SOr" id="Q0U-TQ-cbl"/>
+                        <outlet property="imageView" destination="QPu-zw-SOr" id="5Vn-PK-vcW"/>
+                        <outlet property="photoView" destination="I3D-OG-vZK" id="RW5-vl-SWB"/>
                         <outlet property="strengthLabel" destination="coU-Gl-w1N" id="7ex-Vc-YiR"/>
                         <outlet property="strengthSlider" destination="oyg-Tg-O7g" id="2Kk-cc-GtL"/>
                     </connections>

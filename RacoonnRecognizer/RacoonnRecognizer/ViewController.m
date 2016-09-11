@@ -16,6 +16,10 @@
 @property (strong, nonatomic) IBOutlet UISlider *strengthSlider;
 @property (strong, nonatomic) IBOutlet UILabel *strengthLabel;
 @property (strong, nonatomic) IBOutlet UIView *borderView;
+@property (strong, nonatomic) IBOutlet UIImageView *photoView;
+
+@property (nonatomic) BOOL isImageProcessing;
+@property (nonatomic) BOOL isStarted;
 
 @end
 
@@ -26,14 +30,44 @@
     if (!_filter) {
         _filter = [[GPUImageMotionDetector alloc] init];
         _filter.motionDetectionBlock = ^void (CGPoint motionCentroid, CGFloat motionIntensity, CMTime frameTime) {
-            if (motionIntensity > 0.01) {
-                NSLog(@"motionCentroid: %@, motionIntensity %f, %lld", NSStringFromCGPoint(motionCentroid), motionIntensity, frameTime.value);
+            if (!self.isStarted) {
+                return;
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
+  
+                if (motionIntensity > 0.03) {
+                    NSLog(@"motionCentroid: %@, motionIntensity %f, %lld", NSStringFromCGPoint(motionCentroid), motionIntensity, frameTime.value);
+                    
+                    if (motionCentroid.x > 0.3 && motionCentroid.x < 0.7 && motionCentroid.y > 0.3 && motionCentroid.y < 0.7) {
+                        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(processImage:) object:nil];
+                        [self performSelector:@selector(processImage:) withObject:nil afterDelay:0.3f];
+                    }
+                    
+                }
+            });
+            
+
 
             
         };
     }
     return _filter;
+}
+
+- (void)setStarted: (id) sender {
+    self.isStarted = YES;
+}
+
+- (void)processImage: (id) sender {
+    self.isImageProcessing = YES;
+    self.photoView.hidden = NO;
+    
+    [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:2];
+}
+
+- (void)finishProcessImage: (id) sender {
+    self.isImageProcessing = NO;
+    self.photoView.hidden = YES;
 }
 
 - (void)setBorderView:(UIView *)borderView {
@@ -56,6 +90,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+     [self performSelector:@selector(setStarted:) withObject:nil afterDelay:1.f];
     
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
     //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
