@@ -102,7 +102,8 @@
 
 - (void) updateStrangth {
     self.strengthLabel.text = [NSString stringWithFormat:@"%f", self.strengthSlider.value];
-    self.motionDetector.lowPassFilterStrength = self.strengthSlider.value;
+    //self.motionDetector.lowPassFilterStrength = self.strengthSlider.value;
+    self.motionDetector.lowPassFilterStrength = 0.5;
 }
 
 #pragma mark - View lifecycle
@@ -117,8 +118,8 @@
     //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
     //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1920x1080 cameraPosition:AVCaptureDevicePositionBack];
     
-    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-    videoCamera.horizontallyMirrorFrontFacingCamera = YES;
+    videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
+   videoCamera.horizontallyMirrorFrontFacingCamera = YES;
     
     
     [self updateStrangth];
