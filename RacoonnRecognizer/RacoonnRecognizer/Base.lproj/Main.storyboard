@@ -23,6 +23,14 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9y0-aL-ljk" userLabel="GreyImageView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.39943426724137931" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzg-j3-U5A" userLabel="GreyPhotoView">
+                                <rect key="frame" x="90" y="107" width="420" height="406"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.40010775862068965" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="I3D-OG-vZK">
                                 <rect key="frame" x="90" y="107" width="420" height="406"/>
                             </imageView>
@@ -37,17 +45,25 @@
                             <constraint firstAttribute="trailing" secondItem="QPu-zw-SOr" secondAttribute="trailing" id="3ox-zM-B5N"/>
                             <constraint firstItem="IGD-m1-Z33" firstAttribute="width" secondItem="QPu-zw-SOr" secondAttribute="width" multiplier="0.7" priority="750" id="7HM-tA-EbH"/>
                             <constraint firstItem="I3D-OG-vZK" firstAttribute="leading" secondItem="IGD-m1-Z33" secondAttribute="leading" id="DKL-sN-knO"/>
+                            <constraint firstItem="qzg-j3-U5A" firstAttribute="top" secondItem="I3D-OG-vZK" secondAttribute="top" id="Fgg-xm-vdT"/>
+                            <constraint firstItem="9y0-aL-ljk" firstAttribute="leading" secondItem="QPu-zw-SOr" secondAttribute="leading" id="GPR-6V-FCH"/>
+                            <constraint firstItem="qzg-j3-U5A" firstAttribute="leading" secondItem="I3D-OG-vZK" secondAttribute="leading" id="IKa-On-dJ0"/>
+                            <constraint firstItem="qzg-j3-U5A" firstAttribute="bottom" secondItem="I3D-OG-vZK" secondAttribute="bottom" id="KXE-ED-NDQ"/>
                             <constraint firstItem="I3D-OG-vZK" firstAttribute="trailing" secondItem="IGD-m1-Z33" secondAttribute="trailing" id="LWi-TC-YsJ"/>
                             <constraint firstItem="IGD-m1-Z33" firstAttribute="centerY" secondItem="QPu-zw-SOr" secondAttribute="centerY" id="Rf1-gx-dcp"/>
+                            <constraint firstItem="qzg-j3-U5A" firstAttribute="trailing" secondItem="I3D-OG-vZK" secondAttribute="trailing" id="Z5C-9N-wCb"/>
                             <constraint firstItem="QPu-zw-SOr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZbV-cC-diF"/>
                             <constraint firstItem="QPu-zw-SOr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dNq-0k-7iP"/>
                             <constraint firstItem="IGD-m1-Z33" firstAttribute="height" secondItem="QPu-zw-SOr" secondAttribute="height" multiplier="0.7" priority="750" id="fwM-d1-dOb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QPu-zw-SOr" secondAttribute="trailing" id="hns-Cg-p9I"/>
                             <constraint firstItem="QPu-zw-SOr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jPv-mr-Q2e"/>
+                            <constraint firstItem="9y0-aL-ljk" firstAttribute="bottom" secondItem="QPu-zw-SOr" secondAttribute="bottom" id="pfN-CS-Cb5"/>
+                            <constraint firstItem="9y0-aL-ljk" firstAttribute="trailing" secondItem="QPu-zw-SOr" secondAttribute="trailing" id="pgH-Tg-sv3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QPu-zw-SOr" secondAttribute="bottom" id="ucE-iC-Qr7"/>
                             <constraint firstItem="QPu-zw-SOr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vJE-HV-ExN"/>
                             <constraint firstItem="I3D-OG-vZK" firstAttribute="top" secondItem="IGD-m1-Z33" secondAttribute="top" id="vNF-hM-ji8"/>
                             <constraint firstItem="IGD-m1-Z33" firstAttribute="centerX" secondItem="QPu-zw-SOr" secondAttribute="centerX" id="vwF-hM-F3r"/>
+                            <constraint firstItem="9y0-aL-ljk" firstAttribute="top" secondItem="QPu-zw-SOr" secondAttribute="top" id="xou-Vr-TYY"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -59,6 +75,7 @@
                     </view>
                     <connections>
                         <outlet property="borderView" destination="IGD-m1-Z33" id="ap6-eM-SR4"/>
+                        <outlet property="greyImageView" destination="9y0-aL-ljk" id="pkT-bt-3a8"/>
                         <outlet property="imageView" destination="QPu-zw-SOr" id="5Vn-PK-vcW"/>
                         <outlet property="photoView" destination="I3D-OG-vZK" id="RW5-vl-SWB"/>
                     </connections>

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIView *borderView;
 @property (strong, nonatomic) IBOutlet UIImageView *photoView;
 
+@property (strong, nonatomic) IBOutlet UIView *greyImageView;
 @property(strong, nonatomic) GPUImageFilter *filter;
 
 
@@ -69,6 +70,25 @@
     self.isStarted = YES;
 }
 
+- (UIImage *)imageByCroppingImage:(UIImage *)image scale: (CGFloat) scale
+{
+    // not equivalent to image.size (which depends on the imageOrientation)!
+    double refWidth = CGImageGetWidth(image.CGImage);
+    double refHeight = CGImageGetHeight(image.CGImage);
+    
+    double x = (refWidth - refWidth * scale) / 2.0;
+    double y = (refHeight - refHeight * scale) / 2.0;
+    
+    CGRect cropRect = CGRectMake(x, y, refWidth * scale, refHeight * scale);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef scale:0.0 orientation:UIImageOrientationUp];
+    CGImageRelease(imageRef);
+    
+    return cropped;
+}
+
+
 - (void)processImage: (id) sender {
     if (self.isImageProcessing) {
         return;
@@ -77,8 +97,11 @@
     self.isImageProcessing = YES;
     
     [videoCamera capturePhotoAsImageProcessedUpToFilter:self.filter withCompletionHandler:^(UIImage *processedImage, NSError *error) {
-        self.photoView.image = processedImage;
+       
+        UIImage *image = [self imageByCroppingImage:processedImage scale: 0.7f];
+        self.photoView.image = image;
         self.photoView.hidden = NO;
+        self.greyImageView.hidden = NO;
         [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:3];
     }];
     
@@ -88,6 +111,7 @@
     NSLog(@"Finish Process image");
     self.isImageProcessing = NO;
     self.photoView.hidden = YES;
+    self.greyImageView.hidden = YES;
 }
 
 - (void)setBorderView:(UIView *)borderView {
