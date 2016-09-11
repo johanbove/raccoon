@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RacoonnRecognizer/ViewController.m"
-            timestampString = "495278204.041503"
+            timestampString = "495280835.761237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "-motionDetector"
             landmarkType = "5">
          </BreakpointContent>

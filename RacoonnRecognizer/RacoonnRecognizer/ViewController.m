@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *strengthLabel;
 @property (strong, nonatomic) IBOutlet UIView *borderView;
 @property (strong, nonatomic) IBOutlet UIImageView *photoView;
+@property (strong, nonatomic) IBOutlet UIView *scannerView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *scannerViewConstraint;
 
 @property (strong, nonatomic) IBOutlet UIView *greyImageView;
 @property(strong, nonatomic) GPUImageFilter *filter;
@@ -70,6 +72,23 @@
     self.isStarted = YES;
 }
 
+- (void) startScannerAnimation {
+    self.scannerViewConstraint.constant = 0;
+    [self.view layoutIfNeeded];
+    self.scannerView.hidden = NO;
+    [UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.scannerViewConstraint.constant = self.scannerView.superview.frame.size.width - self.scannerView.frame.size.width;
+        [self.view layoutIfNeeded];
+    } completion:nil];
+    
+}
+
+- (void) stopScannerAnimation {
+    [self.scannerView.layer removeAllAnimations];
+    self.scannerViewConstraint.constant = 0;
+    self.scannerView.hidden = YES;
+}
+
 - (UIImage *)imageByCroppingImage:(UIImage *)image scale: (CGFloat) scale
 {
     // not equivalent to image.size (which depends on the imageOrientation)!
@@ -100,9 +119,11 @@
        
         UIImage *image = [self imageByCroppingImage:processedImage scale: 0.7f];
         self.photoView.image = image;
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         self.photoView.hidden = NO;
         self.greyImageView.hidden = NO;
-        [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:3];
+        [self startScannerAnimation];
+        [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:4];
     }];
     
 }
@@ -111,7 +132,9 @@
     NSLog(@"Finish Process image");
     self.isImageProcessing = NO;
     self.photoView.hidden = YES;
+    [self startScannerAnimation];
     self.greyImageView.hidden = YES;
+    [self stopScannerAnimation];
 }
 
 - (void)setBorderView:(UIView *)borderView {
@@ -126,7 +149,6 @@
 
 - (void) updateStrangth {
     self.strengthLabel.text = [NSString stringWithFormat:@"%f", self.strengthSlider.value];
-    //self.motionDetector.lowPassFilterStrength = self.strengthSlider.value;
     self.motionDetector.lowPassFilterStrength = 0.5;
 }
 
@@ -138,10 +160,7 @@
      [self performSelector:@selector(setStarted:) withObject:nil afterDelay:1.f];
     
     videoCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
-    //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
-    //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
-    //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1920x1080 cameraPosition:AVCaptureDevicePositionBack];
-    
+ 
     videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
    videoCamera.horizontallyMirrorFrontFacingCamera = YES;
     
