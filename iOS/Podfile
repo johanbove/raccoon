@@ -1,2 +1,6 @@
-pod 'OpenCV'
-pod 'DFJPEGTurbo'
+target 'FaceDetector' do
+    pod 'OpenCV-iOS'
+    pod 'DFJPEGTurbo'
+end
+
+
