@@ -14,6 +14,7 @@
 		8BDC917A1D8517EA001D19D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC91781D8517EA001D19D3 /* Main.storyboard */; };
 		8BDC917C1D8517EA001D19D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC917B1D8517EA001D19D3 /* Assets.xcassets */; };
 		8BDC917F1D8517EA001D19D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC917D1D8517EA001D19D3 /* LaunchScreen.storyboard */; };
+		8BDC91881D8576BF001D19D3 /* WatsonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC91871D8576BF001D19D3 /* WatsonClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		8BDC917B1D8517EA001D19D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BDC917E1D8517EA001D19D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BDC91801D8517EA001D19D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BDC91861D8576BF001D19D3 /* WatsonClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WatsonClient.h; path = Client/WatsonClient.h; sourceTree = "<group>"; };
+		8BDC91871D8576BF001D19D3 /* WatsonClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WatsonClient.m; path = Client/WatsonClient.m; sourceTree = "<group>"; };
 		EECC14481707DB511B4CC322 /* Pods-RacoonnRecognizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacoonnRecognizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-RacoonnRecognizer/Pods-RacoonnRecognizer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +94,7 @@
 				8BDC917D1D8517EA001D19D3 /* LaunchScreen.storyboard */,
 				8BDC91801D8517EA001D19D3 /* Info.plist */,
 				8BDC916F1D8517EA001D19D3 /* Supporting Files */,
+				8BDC91891D8576C8001D19D3 /* Client */,
 			);
 			path = RacoonnRecognizer;
 			sourceTree = "<group>";
@@ -101,6 +105,15 @@
 				8BDC91701D8517EA001D19D3 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8BDC91891D8576C8001D19D3 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				8BDC91861D8576BF001D19D3 /* WatsonClient.h */,
+				8BDC91871D8576BF001D19D3 /* WatsonClient.m */,
+			);
+			name = Client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BDC91881D8576BF001D19D3 /* WatsonClient.m in Sources */,
 				8BDC91771D8517EA001D19D3 /* ViewController.m in Sources */,
 				8BDC91741D8517EA001D19D3 /* AppDelegate.m in Sources */,
 				8BDC91711D8517EA001D19D3 /* main.m in Sources */,

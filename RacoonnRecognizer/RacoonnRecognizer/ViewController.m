@@ -123,7 +123,7 @@
         self.photoView.hidden = NO;
         self.greyImageView.hidden = NO;
         [self startScannerAnimation];
-        [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:4];
+        [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:0.5];
     }];
     
 }
