@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface WatsonClient : NSObject
 
 + (WatsonClient *)sharedClient;
+- (void) recognizePhoto: (UIImage *) image compltion: (void (^)(NSString *category))completion;
 
 
 

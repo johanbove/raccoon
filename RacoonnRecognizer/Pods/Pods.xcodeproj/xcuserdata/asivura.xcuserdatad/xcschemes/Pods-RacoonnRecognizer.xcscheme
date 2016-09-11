@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '30FC3AE2C3EF2C4D045B25EB01A61D3D'
+               BlueprintIdentifier = '6E804D65182E7712C203C7E86E1EA7AD'
                BlueprintName = 'Pods-RacoonnRecognizer'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-RacoonnRecognizer.a'>

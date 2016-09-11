@@ -7,6 +7,7 @@
 //
 #import "ViewController.h"
 #import <AssetsLibrary/ALAssetsLibrary.h>
+#import "WatsonClient.h"
 
 @interface ViewController()
 
@@ -50,7 +51,7 @@
             }
             dispatch_async(dispatch_get_main_queue(), ^{
   
-                if (motionIntensity > 0.03) {
+                if (motionIntensity > 0.01) {
                     //NSLog(@"motionCentroid: %@, motionIntensity %f, %lld", NSStringFromCGPoint(motionCentroid), motionIntensity, frameTime.value);
                     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(processImage:) object:nil];
                     if (motionCentroid.x > 0.3 && motionCentroid.x < 0.7 && motionCentroid.y > 0.3 && motionCentroid.y < 0.7) {
@@ -123,7 +124,14 @@
         self.photoView.hidden = NO;
         self.greyImageView.hidden = NO;
         [self startScannerAnimation];
-        [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:0.5];
+        
+        [[WatsonClient sharedClient] recognizePhoto:image compltion:^(NSString *category) {
+            NSLog(@"Cactegory %@", category);
+        }];
+        
+        [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:4];
+        
+        
     }];
     
 }

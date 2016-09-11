@@ -3,5 +3,6 @@
 
 target 'RacoonnRecognizer' do
   pod 'GPUImage'
+  pod 'AFNetworking', '~> 3.0'
 
 end
