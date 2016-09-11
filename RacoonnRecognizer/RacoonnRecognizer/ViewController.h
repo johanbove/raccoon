@@ -11,7 +11,7 @@
 
 @interface ViewController : UIViewController
 {
-    GPUImageVideoCamera *videoCamera;
+    GPUImageStillCamera *videoCamera;
 
     GPUImageMovieWriter *movieWriter;
 }

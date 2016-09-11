@@ -10,13 +10,18 @@
 
 @interface ViewController()
 
-@property (strong, nonatomic) GPUImageMotionDetector *filter;
+@property (strong, nonatomic) GPUImageMotionDetector *motionDetector;
 
 @property (strong, nonatomic) IBOutlet GPUImageView *imageView;
 @property (strong, nonatomic) IBOutlet UISlider *strengthSlider;
 @property (strong, nonatomic) IBOutlet UILabel *strengthLabel;
 @property (strong, nonatomic) IBOutlet UIView *borderView;
 @property (strong, nonatomic) IBOutlet UIImageView *photoView;
+
+@property(strong, nonatomic) GPUImageFilter *filter;
+
+
+
 
 @property (nonatomic) BOOL isImageProcessing;
 @property (nonatomic) BOOL isStarted;
@@ -25,21 +30,27 @@
 
 @implementation ViewController
 
-
-- (GPUImageMotionDetector *)filter {
+- (GPUImageFilter *)filter {
     if (!_filter) {
-        _filter = [[GPUImageMotionDetector alloc] init];
-        _filter.motionDetectionBlock = ^void (CGPoint motionCentroid, CGFloat motionIntensity, CMTime frameTime) {
+        _filter = [[GPUImageFilter alloc] init];
+    }
+    return _filter;
+}
+
+
+- (GPUImageMotionDetector *)motionDetector {
+    if (!_motionDetector) {
+        _motionDetector = [[GPUImageMotionDetector alloc] init];
+        _motionDetector.motionDetectionBlock = ^void (CGPoint motionCentroid, CGFloat motionIntensity, CMTime frameTime) {
             if (!self.isStarted) {
                 return;
             }
             dispatch_async(dispatch_get_main_queue(), ^{
   
                 if (motionIntensity > 0.03) {
-                    NSLog(@"motionCentroid: %@, motionIntensity %f, %lld", NSStringFromCGPoint(motionCentroid), motionIntensity, frameTime.value);
-                    
+                    //NSLog(@"motionCentroid: %@, motionIntensity %f, %lld", NSStringFromCGPoint(motionCentroid), motionIntensity, frameTime.value);
+                    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(processImage:) object:nil];
                     if (motionCentroid.x > 0.3 && motionCentroid.x < 0.7 && motionCentroid.y > 0.3 && motionCentroid.y < 0.7) {
-                        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(processImage:) object:nil];
                         [self performSelector:@selector(processImage:) withObject:nil afterDelay:0.3f];
                     }
                     
@@ -51,7 +62,7 @@
             
         };
     }
-    return _filter;
+    return _motionDetector;
 }
 
 - (void)setStarted: (id) sender {
@@ -59,13 +70,22 @@
 }
 
 - (void)processImage: (id) sender {
+    if (self.isImageProcessing) {
+        return;
+    }
+    NSLog(@"Process image");
     self.isImageProcessing = YES;
-    self.photoView.hidden = NO;
     
-    [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:2];
+    [videoCamera capturePhotoAsImageProcessedUpToFilter:self.filter withCompletionHandler:^(UIImage *processedImage, NSError *error) {
+        self.photoView.image = processedImage;
+        self.photoView.hidden = NO;
+        [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:3];
+    }];
+    
 }
 
 - (void)finishProcessImage: (id) sender {
+    NSLog(@"Finish Process image");
     self.isImageProcessing = NO;
     self.photoView.hidden = YES;
 }
@@ -82,7 +102,7 @@
 
 - (void) updateStrangth {
     self.strengthLabel.text = [NSString stringWithFormat:@"%f", self.strengthSlider.value];
-    self.filter.lowPassFilterStrength = self.strengthSlider.value;
+    self.motionDetector.lowPassFilterStrength = self.strengthSlider.value;
 }
 
 #pragma mark - View lifecycle
@@ -92,37 +112,23 @@
     [super viewDidLoad];
      [self performSelector:@selector(setStarted:) withObject:nil afterDelay:1.f];
     
-    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
+    videoCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
     //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
     //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
     //    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1920x1080 cameraPosition:AVCaptureDevicePositionBack];
     
     videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     videoCamera.horizontallyMirrorFrontFacingCamera = YES;
+    
+    
     [self updateStrangth];
 
     
-    
-    //    filter = [[GPUImageTiltShiftFilter alloc] init];
-    //    [(GPUImageTiltShiftFilter *)filter setTopFocusLevel:0.65];
-    //    [(GPUImageTiltShiftFilter *)filter setBottomFocusLevel:0.85];
-    //    [(GPUImageTiltShiftFilter *)filter setBlurSize:1.5];
-    //    [(GPUImageTiltShiftFilter *)filter setFocusFallOffRate:0.2];
-    
-    //    filter = [[GPUImageSketchFilter alloc] init];
-    //    filter = [[GPUImageColorInvertFilter alloc] init];
-    //    filter = [[GPUImageSmoothToonFilter alloc] init];
-    //    GPUImageRotationFilter *rotationFilter = [[GPUImageRotationFilter alloc] initWithRotation:kGPUImageRotateRightFlipVertical];
-    
+    [videoCamera addTarget:self.motionDetector];
     [videoCamera addTarget:self.filter];
     GPUImageView *filterView = self.imageView;
-    //    filterView.fillMode = kGPUImageFillModeStretch;
-    //    filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
-    
-    // Record a movie for 10 s and store it in /Documents, visible via iTunes file sharing
-    
 
-    [self.filter addTarget:filterView];
+    [videoCamera addTarget:filterView];
     
     [videoCamera startCameraCapture];
     
