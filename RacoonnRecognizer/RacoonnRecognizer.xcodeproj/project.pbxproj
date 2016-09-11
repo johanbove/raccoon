@@ -15,6 +15,7 @@
 		8BDC917C1D8517EA001D19D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC917B1D8517EA001D19D3 /* Assets.xcassets */; };
 		8BDC917F1D8517EA001D19D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC917D1D8517EA001D19D3 /* LaunchScreen.storyboard */; };
 		8BDC91881D8576BF001D19D3 /* WatsonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC91871D8576BF001D19D3 /* WatsonClient.m */; };
+		8BDC918C1D858E74001D19D3 /* ArduinoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC918B1D858E74001D19D3 /* ArduinoClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		8BDC91801D8517EA001D19D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BDC91861D8576BF001D19D3 /* WatsonClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WatsonClient.h; path = Client/WatsonClient.h; sourceTree = "<group>"; };
 		8BDC91871D8576BF001D19D3 /* WatsonClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WatsonClient.m; path = Client/WatsonClient.m; sourceTree = "<group>"; };
+		8BDC918A1D858E74001D19D3 /* ArduinoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArduinoClient.h; path = Client/ArduinoClient.h; sourceTree = "<group>"; };
+		8BDC918B1D858E74001D19D3 /* ArduinoClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArduinoClient.m; path = Client/ArduinoClient.m; sourceTree = "<group>"; };
 		EECC14481707DB511B4CC322 /* Pods-RacoonnRecognizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacoonnRecognizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-RacoonnRecognizer/Pods-RacoonnRecognizer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +115,8 @@
 			children = (
 				8BDC91861D8576BF001D19D3 /* WatsonClient.h */,
 				8BDC91871D8576BF001D19D3 /* WatsonClient.m */,
+				8BDC918A1D858E74001D19D3 /* ArduinoClient.h */,
+				8BDC918B1D858E74001D19D3 /* ArduinoClient.m */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 				8BDC91771D8517EA001D19D3 /* ViewController.m in Sources */,
 				8BDC91741D8517EA001D19D3 /* AppDelegate.m in Sources */,
 				8BDC91711D8517EA001D19D3 /* main.m in Sources */,
+				8BDC918C1D858E74001D19D3 /* ArduinoClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

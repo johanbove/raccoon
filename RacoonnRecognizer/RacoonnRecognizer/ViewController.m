@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import <AssetsLibrary/ALAssetsLibrary.h>
 #import "WatsonClient.h"
+#import "ArduinoClient.h"
 
 @interface ViewController()
 
@@ -23,6 +24,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *greyImageView;
 @property(strong, nonatomic) GPUImageFilter *filter;
+@property(strong, nonatomic) NSArray *array;
+@property(nonatomic) NSUInteger current;
 
 
 
@@ -33,6 +36,19 @@
 @end
 
 @implementation ViewController
+
+- (NSArray *) array {
+    if (!_array) {
+        _array = @[@1, @3, @2, @1];
+    }
+    return _array;
+}
+
+- (NSNumber *) currentNumber {
+    NSNumber *result = self.array[self.current];
+    self.current = (self.current + 1)%self.array.count;
+    return result;
+}
 
 - (GPUImageFilter *)filter {
     if (!_filter) {
@@ -125,15 +141,28 @@
         self.greyImageView.hidden = NO;
         [self startScannerAnimation];
         
-        [[WatsonClient sharedClient] recognizePhoto:image compltion:^(NSString *category) {
-            NSLog(@"Cactegory %@", category);
+        
+//        [[WatsonClient sharedClient] recognizePhoto:image compltion:^(NSString *category) {
+//            NSLog(@"Cactegory %@", category);
+//        }];
+        
+        [[ArduinoClient sharedClient] sendNumber:[self currentNumber] compltion:^(NSString *result) {
+            [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:2];
+            
         }];
         
-        [self performSelector:@selector(finishProcessImage:) withObject:nil afterDelay:4];
+        
         
         
     }];
     
+}
+
+- (void) cancelCurrent: (id) sender {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(cancelCurrent:) object:nil];
+    [[ArduinoClient sharedClient] sendNumber:@0 compltion:^(NSString *result) {
+        NSLog(@"cancel");
+    }];
 }
 
 - (void)finishProcessImage: (id) sender {
@@ -143,6 +172,7 @@
     [self startScannerAnimation];
     self.greyImageView.hidden = YES;
     [self stopScannerAnimation];
+    [self performSelector:@selector(cancelCurrent:) withObject:nil afterDelay:5];
 }
 
 - (void)setBorderView:(UIView *)borderView {
@@ -165,6 +195,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self cancelCurrent:nil];
      [self performSelector:@selector(setStarted:) withObject:nil afterDelay:1.f];
     
     videoCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
