@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPu-zw-SOr" customClass="GPUImageView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9y0-aL-ljk" userLabel="GreyImageView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.39943426724137931" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzg-j3-U5A" userLabel="GreyPhotoView">
+                                <rect key="frame" x="17" y="107" width="565" height="406"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.40010775862068965" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put garbage here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqn-s3-SY4">
+                                <rect key="frame" x="17" y="107" width="565" height="406"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="76"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="I3D-OG-vZK">
+                                <rect key="frame" x="17" y="107" width="565" height="406"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGD-m1-Z33">
+                                <rect key="frame" x="17" y="107" width="565" height="406"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRM-Du-ajc">
+                                        <rect key="frame" x="235" y="0.0" width="4" height="406"/>
+                                        <color key="backgroundColor" red="1" green="0.15686274510000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="4" id="mfK-lr-vCy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="IRM-Du-ajc" firstAttribute="top" secondItem="IGD-m1-Z33" secondAttribute="top" id="46C-Wf-1Ja"/>
+                                    <constraint firstAttribute="bottom" secondItem="IRM-Du-ajc" secondAttribute="bottom" id="NWo-7a-BG1"/>
+                                    <constraint firstItem="IRM-Du-ajc" firstAttribute="leading" secondItem="IGD-m1-Z33" secondAttribute="leading" constant="235" id="NnV-GM-7aS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I3D-OG-vZK" firstAttribute="bottom" secondItem="IGD-m1-Z33" secondAttribute="bottom" id="3PO-xE-rst"/>
+                            <constraint firstAttribute="trailing" secondItem="QPu-zw-SOr" secondAttribute="trailing" id="3ox-zM-B5N"/>
+                            <constraint firstItem="IGD-m1-Z33" firstAttribute="width" secondItem="QPu-zw-SOr" secondAttribute="width" multiplier="0.7" priority="750" id="7HM-tA-EbH"/>
+                            <constraint firstItem="I3D-OG-vZK" firstAttribute="leading" secondItem="IGD-m1-Z33" secondAttribute="leading" id="DKL-sN-knO"/>
+                            <constraint firstItem="qzg-j3-U5A" firstAttribute="top" secondItem="I3D-OG-vZK" secondAttribute="top" id="Fgg-xm-vdT"/>
+                            <constraint firstItem="9y0-aL-ljk" firstAttribute="leading" secondItem="QPu-zw-SOr" secondAttribute="leading" id="GPR-6V-FCH"/>
+                            <constraint firstItem="xqn-s3-SY4" firstAttribute="bottom" secondItem="qzg-j3-U5A" secondAttribute="bottom" id="I6w-II-fFm"/>
+                            <constraint firstItem="qzg-j3-U5A" firstAttribute="leading" secondItem="I3D-OG-vZK" secondAttribute="leading" id="IKa-On-dJ0"/>
+                            <constraint firstItem="qzg-j3-U5A" firstAttribute="bottom" secondItem="I3D-OG-vZK" secondAttribute="bottom" id="KXE-ED-NDQ"/>
+                            <constraint firstItem="I3D-OG-vZK" firstAttribute="trailing" secondItem="IGD-m1-Z33" secondAttribute="trailing" id="LWi-TC-YsJ"/>
+                            <constraint firstItem="xqn-s3-SY4" firstAttribute="trailing" secondItem="qzg-j3-U5A" secondAttribute="trailing" id="NGP-xc-qlf"/>
+                            <constraint firstItem="IGD-m1-Z33" firstAttribute="centerY" secondItem="QPu-zw-SOr" secondAttribute="centerY" id="Rf1-gx-dcp"/>
+                            <constraint firstItem="xqn-s3-SY4" firstAttribute="leading" secondItem="qzg-j3-U5A" secondAttribute="leading" id="Ua5-FE-J86"/>
+                            <constraint firstItem="xqn-s3-SY4" firstAttribute="top" secondItem="qzg-j3-U5A" secondAttribute="top" id="X3b-J3-wXt"/>
+                            <constraint firstItem="qzg-j3-U5A" firstAttribute="trailing" secondItem="I3D-OG-vZK" secondAttribute="trailing" id="Z5C-9N-wCb"/>
+                            <constraint firstItem="QPu-zw-SOr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZbV-cC-diF"/>
+                            <constraint firstItem="QPu-zw-SOr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dNq-0k-7iP"/>
+                            <constraint firstItem="IGD-m1-Z33" firstAttribute="height" secondItem="QPu-zw-SOr" secondAttribute="height" multiplier="0.7" priority="750" id="fwM-d1-dOb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QPu-zw-SOr" secondAttribute="trailing" id="hns-Cg-p9I"/>
+                            <constraint firstItem="QPu-zw-SOr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jPv-mr-Q2e"/>
+                            <constraint firstItem="9y0-aL-ljk" firstAttribute="bottom" secondItem="QPu-zw-SOr" secondAttribute="bottom" id="pfN-CS-Cb5"/>
+                            <constraint firstItem="9y0-aL-ljk" firstAttribute="trailing" secondItem="QPu-zw-SOr" secondAttribute="trailing" id="pgH-Tg-sv3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QPu-zw-SOr" secondAttribute="bottom" id="ucE-iC-Qr7"/>
+                            <constraint firstItem="QPu-zw-SOr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vJE-HV-ExN"/>
+                            <constraint firstItem="I3D-OG-vZK" firstAttribute="top" secondItem="IGD-m1-Z33" secondAttribute="top" id="vNF-hM-ji8"/>
+                            <constraint firstItem="IGD-m1-Z33" firstAttribute="centerX" secondItem="QPu-zw-SOr" secondAttribute="centerX" id="vwF-hM-F3r"/>
+                            <constraint firstItem="9y0-aL-ljk" firstAttribute="top" secondItem="QPu-zw-SOr" secondAttribute="top" id="xou-Vr-TYY"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dNq-0k-7iP"/>
+                                <exclude reference="hns-Cg-p9I"/>
+                                <exclude reference="jPv-mr-Q2e"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="borderView" destination="IGD-m1-Z33" id="ap6-eM-SR4"/>
+                        <outlet property="greyImageView" destination="9y0-aL-ljk" id="pkT-bt-3a8"/>
+                        <outlet property="imageView" destination="QPu-zw-SOr" id="5Vn-PK-vcW"/>
+                        <outlet property="photoView" destination="I3D-OG-vZK" id="RW5-vl-SWB"/>
+                        <outlet property="scannerView" destination="IRM-Du-ajc" id="rkm-V1-QCU"/>
+                        <outlet property="scannerViewConstraint" destination="NnV-GM-7aS" id="zFf-kc-0fg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="227" y="372"/>
+        </scene>
+    </scenes>
+</document>

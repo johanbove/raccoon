@@ -24,7 +24,7 @@
 		218A10491BC0FFD1003E4D80 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218A10481BC0FFD1003E4D80 /* AssetsLibrary.framework */; };
 		218A104B1BC0FFED003E4D80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218A104A1BC0FFED003E4D80 /* Foundation.framework */; };
 		218A104F1BC1EF4E003E4D80 /* haarcascade_frontalface_default.xml in Resources */ = {isa = PBXBuildFile; fileRef = 218A104E1BC1EF4E003E4D80 /* haarcascade_frontalface_default.xml */; };
-		296BBB9753B0902CFA0796B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E108F0F04785B35CD68862 /* libPods.a */; };
+		95F6AA5BAE74A86D9AC26A2A /* libPods-FaceDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A969531DD778A16287B8832E /* libPods-FaceDetector.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,9 +49,9 @@
 		218A10481BC0FFD1003E4D80 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		218A104A1BC0FFED003E4D80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		218A104E1BC1EF4E003E4D80 /* haarcascade_frontalface_default.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_frontalface_default.xml; path = Resources/haarcascade_frontalface_default.xml; sourceTree = "<group>"; };
-		25E108F0F04785B35CD68862 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		68D7514CE04078E123FE6145 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		730F6A8B21E69539F6B76B25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A969531DD778A16287B8832E /* libPods-FaceDetector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FaceDetector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8226B9D398204AAEE7479FB /* Pods-FaceDetector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceDetector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FaceDetector/Pods-FaceDetector.debug.xcconfig"; sourceTree = "<group>"; };
+		D41FC524725C92D242A05610 /* Pods-FaceDetector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceDetector.release.xcconfig"; path = "Pods/Target Support Files/Pods-FaceDetector/Pods-FaceDetector.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 				218A103D1BC0FF7F003E4D80 /* CoreGraphics.framework in Frameworks */,
 				218A103B1BC0FF6D003E4D80 /* CoreImage.framework in Frameworks */,
 				218A10391BC0F2E3003E4D80 /* AVFoundation.framework in Frameworks */,
-				296BBB9753B0902CFA0796B2 /* libPods.a in Frameworks */,
+				95F6AA5BAE74A86D9AC26A2A /* libPods-FaceDetector.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,8 +81,8 @@
 			children = (
 				211F835D1BC0E5CD00632691 /* FaceDetector */,
 				211F835C1BC0E5CD00632691 /* Products */,
-				29315934A10037A72AB98E0E /* Pods */,
 				80EB85984D72872C497A99E2 /* Frameworks */,
+				AE9D87D66AF43E235FACB2D7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,15 +127,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		29315934A10037A72AB98E0E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				68D7514CE04078E123FE6145 /* Pods.debug.xcconfig */,
-				730F6A8B21E69539F6B76B25 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		80EB85984D72872C497A99E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,9 +140,18 @@
 				218A103C1BC0FF7F003E4D80 /* CoreGraphics.framework */,
 				218A103A1BC0FF6D003E4D80 /* CoreImage.framework */,
 				218A10381BC0F2E3003E4D80 /* AVFoundation.framework */,
-				25E108F0F04785B35CD68862 /* libPods.a */,
+				A969531DD778A16287B8832E /* libPods-FaceDetector.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE9D87D66AF43E235FACB2D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C8226B9D398204AAEE7479FB /* Pods-FaceDetector.debug.xcconfig */,
+				D41FC524725C92D242A05610 /* Pods-FaceDetector.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,11 +161,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 211F83721BC0E5CD00632691 /* Build configuration list for PBXNativeTarget "FaceDetector" */;
 			buildPhases = (
-				14C7BFC3D882F3DDF2E5633F /* Check Pods Manifest.lock */,
+				4B16B6457CEBA7865D0ECDCB /* [CP] Check Pods Manifest.lock */,
 				211F83571BC0E5CD00632691 /* Sources */,
 				211F83581BC0E5CD00632691 /* Frameworks */,
 				211F83591BC0E5CD00632691 /* Resources */,
-				CE8E29989E3E581B45360F0F /* Copy Pods Resources */,
+				44294A5529F3FB891AE671B6 /* [CP] Embed Pods Frameworks */,
+				7E59F47C17060892CEF95386 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,14 +225,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		14C7BFC3D882F3DDF2E5633F /* Check Pods Manifest.lock */ = {
+		44294A5529F3FB891AE671B6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceDetector/Pods-FaceDetector-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B16B6457CEBA7865D0ECDCB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,19 +255,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CE8E29989E3E581B45360F0F /* Copy Pods Resources */ = {
+		7E59F47C17060892CEF95386 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceDetector/Pods-FaceDetector-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -330,6 +346,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -368,12 +385,13 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
 		211F83731BC0E5CD00632691 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68D7514CE04078E123FE6145 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = C8226B9D398204AAEE7479FB /* Pods-FaceDetector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -416,7 +434,7 @@
 		};
 		211F83741BC0E5CD00632691 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 730F6A8B21E69539F6B76B25 /* Pods.release.xcconfig */;
+			baseConfigurationReference = D41FC524725C92D242A05610 /* Pods-FaceDetector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
