@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet GPUImageView *imageView;
 @property (strong, nonatomic) IBOutlet UISlider *strengthSlider;
 @property (strong, nonatomic) IBOutlet UILabel *strengthLabel;
+@property (strong, nonatomic) IBOutlet UIView *borderView;
 
 @end
 
@@ -33,6 +34,12 @@
         };
     }
     return _filter;
+}
+
+- (void)setBorderView:(UIView *)borderView {
+    _borderView = borderView;
+    _borderView.layer.borderColor = [UIColor greenColor].CGColor;
+    _borderView.layer.borderWidth = 3.0f;
 }
 
 - (IBAction)strangthChanged:(UISlider *)sender {
